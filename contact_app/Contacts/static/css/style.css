@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 100%;
+  min-height: 100vh;
+}
+
+img{
+  display: block;
+}
+.main-table th{
+  padding: 0.8rem;
+}
+
+.register-page{
+  min-height: 100vh;
+  background-image:linear-gradient(to right, rgba(0, 0, 0, 0.422) , rgba(0, 0, 0, 0.455)), url('../img/istockphoto-1332508770-612x612.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  color: white;
+  
+}
+.register-html{
+  border-radius: 5%;
+  padding: 5rem 3rem;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.525),rgba(0, 0, 0, 0.682));
+}

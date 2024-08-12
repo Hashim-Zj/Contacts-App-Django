@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+Register to Contacts.
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block main %}
+<main class="register-page d-flex justify-content-center align-items-center">
+  {% if messages %}
+  {% for m in messages %}
+  <div class="alert alert-warning alert-dismissible fade show w-25 ms-auto position-absolute top-0 end-0" role="alert">
+    <img src="{% static 'img/gpp_maybe_17dp_8B1A10_FILL0_wght400_GRAD0_opsz20.png' %}" alt="!" width="22" height="22"
+      class="d-inline-flex">{{ m }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor%}
+  {% endif %}
+  <section class="">
+    <form action="" method="post" class="register-html border-2">
+      <legend class="fs-2 mb-3">Register your accound.</legend>
+      <hr class="border border-3">
+      <fieldset>
+        {% csrf_token %}
+        {{form}}
+      </fieldset>
+      <div class="d-flex justify-content-center p-2 mt-5">
+        <button type="reset" class="btn btn-outline-light fw-bold me-2">clear</button>
+        <button type="submit" class="btn btn-outline-primary fw-bold ms-2">Register</button>
+      </div>
+      <p class="text-center pt-2 fs-5">if you hav an accound: <span class="fs-4">&#8594;</span>&nbsp;<a
+          href="{% url 'login_view'%}"
+          class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">sign in</a></p>
+    </form>
+  </section>
+</main>
+{% endblock %}
