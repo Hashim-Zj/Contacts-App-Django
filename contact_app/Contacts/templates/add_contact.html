@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+Your Contacts | Add your new frinds.
+{% endblock %}
+
+{% block main %}
+<main>
+  <section id="add-to-contact" class=" row w-75 m-auto d-flex border border-2 shadow mt-4">
+    <h2 class="display-4 py-2 text-center shadow">Add To your Contacts.</h2>
+    <div class="col-6">
+      <figure>
+        <img src="{% static 'img/istockphoto-514755797-612x612.jpg' %}" alt="" height="612" width="512" class="">
+      </figure>
+    </div>
+    <div class=" col-6 fw-semibold fs-5 ">
+      <form action="" method="post" class="p-2 my-4 me-5">
+        <fieldset>
+          {% csrf_token %}
+          {{form}}
+        </fieldset>
+        <fieldset class="d-flex">
+          <button type="submit" class="btn btn-outline-success py-2 px-3 fw-bold mt-2 ms-2">Add Now</button>
+          <button type="submit" class="btn btn-outline-dark py-2 px-3 fw-bold mt-2 ms-3">Clear</button>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+</main>
+{% endblock %}

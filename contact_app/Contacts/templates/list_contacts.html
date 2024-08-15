@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block main %}
+<main>
+  <section id="table-section" class="my-2 mx-5">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr class="bg-dark text-white main-table">
+          <th scope="col" class="text-center">ID:</th>
+          <th scope="col" class="text-center">Name</th>
+          <th scope="col" class="text-center">E-mail</th>
+          <th scope="col" class="text-center">Phone</th>
+          <th scope="col" class="text-center">Favorite</th>
+          <th scope="col" class="text-center w-auto">More</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {% for i in contacts %}
+        <tr class="fs-5">
+          <th scope="row" class="">{{i.id}}</th>
+          <td>{{i.first_name}}&nbsp;{{i.last_name}}</td>
+          <td>{{i.e_mail}}</td>
+          <td>{{i.phone_no}}</td>
+          {% if i.favorite %}
+          <td class="text-center"><img src="{% static 'img/star_half.png' %}" alt="" height="25" width="25"
+              class="mx-auto"></td>
+          {% else %}
+          <td class="text-center"><img src="{% static 'img/star.png' %}" alt="" height="25" width="25" class="mx-auto">
+          </td>
+          {% endif %}
+          <td class="text-center"><a href="{% url 'detailcontact_view' i.id %}"
+              class="btn btn-outline-dark mx-auto">View in</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</main>
+{% endblock %}

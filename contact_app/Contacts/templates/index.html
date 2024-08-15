@@ -27,7 +27,7 @@
         <figure>
           <img src="{% static 'img/contact-information.png' %}" alt="Loding" width="122" height="122" class="ms-5 mt-2">
         </figure>
-        <a class="navbar-brand contact-header ms-3" href="#">
+        <a class="navbar-brand contact-header ms-3" href="">
           <h1 class="display-4 fw-semibold">Contacts</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -38,13 +38,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-3 ml-auto mb-2 mb-lg-0 d-flex w-100 fs-4">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home_view' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">List</a>
+              <a class="nav-link active" href="{% url 'listcontact_view' %}">List</a>
             </li>
             <li class="nav-item ms-2">
-              <a class="nav-link active d-flex" href="#"><img
+              <a class="nav-link active d-flex" href="{% url 'addcontact_view' %}"><img
                   src="{% static 'img/person_add_17dp_75FB4C_FILL0_wght400_GRAD0_opsz20.png' %}" alt="+" width="35"
                   height="35">Add new</a>
             </li>
@@ -70,19 +70,21 @@
     </nav>
 
     {% if messages %}
-  {% for m in messages %}
-  <div class="alert alert-warning alert-dismissible fade show w-25 ms-auto position-absolute top-0 end-0" role="alert">
-    <img src="{% static 'img/gpp_maybe_17dp_8B1A10_FILL0_wght400_GRAD0_opsz20.png' %}" alt="!" width="22" height="22"
-      class="d-inline-flex">{{ m }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  {% endfor%}
-  {% endif %}
+    {% for m in messages %}
+    <div class="alert alert-warning alert-dismissible fade show w-25 ms-auto position-absolute top-0 end-0"
+      role="alert">
+      <img src="{% static 'img/gpp_maybe_17dp_8B1A10_FILL0_wght400_GRAD0_opsz20.png' %}" alt="!" width="22" height="22"
+        class="d-inline-flex fs-4 fw-semibold">{{ m }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor%}
+    {% endif %}
     {% endblock %}
 
     {% block main %}
     <main>
       <section id="table-section" class="my-2 mx-5">
+
         <table class="table table-striped table-bordered">
           <thead>
             <tr class="bg-dark text-white main-table">
@@ -90,20 +92,33 @@
               <th scope="col" class="text-center">Name:</th>
               <th scope="col" class="text-center">E-mail:</th>
               <th scope="col" class="text-center">Phone:</th>
+              <td scope="col" class="text-center">Star</td>
             </tr>
           </thead>
           <tbody class="table-group-divider">
-            <tr>
-              <th scope="row" class="">1</th>
-              <th>Hsdij</th>
-              <th>djfkjdi</th>
-              <th>dfdf</th>
+            {% for i in contacts %}
+            <tr class="fs-5">
+              <th scope="row" class="">{{i.id}}</th>
+              <td>{{i.first_name}}&nbsp;{{i.last_name}}</td>
+              <td>{{i.e_mail}}</td>
+              <td>{{i.phone_no}}</td>
+              {% if i.favorite %}
+              <td class="text-center"><img src="{% static 'img/star_half.png' %}" alt="" height="25" width="25"
+                  class="mx-auto"></td>
+              {% else %}
+              <td class="text-center"><img src="{% static 'img/star.png' %}" alt="" height="25" width="25"
+                  class="mx-auto">
+              </td>
+              {% endif %}
             </tr>
+            {% endfor %}
           </tbody>
         </table>
+        <p><a href="{% url 'listcontact_view' %}" class="text-capitalize btn btn-outline-dark w-100 fw-bold fs-4">view
+            all</a></p>
       </section>
     </main>
-    {% endblock%}
+    {% endblock %}
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>

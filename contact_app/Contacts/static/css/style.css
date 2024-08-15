@@ -30,3 +30,7 @@ img{
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.525),rgba(0, 0, 0, 0.682));
 }
+
+.add-to-contact-form{
+  background-image: linear-gradient(rgba(92, 108, 105, 0.568),rgba(143, 118, 168, 0.492));
+}

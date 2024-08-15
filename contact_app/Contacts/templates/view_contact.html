@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block main %}
+
+<main>
+  <section class="mx-auto mt-5 d-flex justify-content-evenly">
+    <div class="col-6">
+      <figure>
+        <img src="{% static 'img/istockphoto-514755797-612x612.jpg' %}" alt="" height="612" width="512" class="">
+      </figure>
+    </div>
+    <div class=" col-6 fw-semibold fs-5 ">
+      <form action="" class="p-2 my-4 me-5">
+        <p class="d-flex">
+            <label class="col-6">First Name:{{contact.id}}</label>
+            <label class="col-6">{{contact.first_name}}</label>
+        </p>
+        <p class="d-flex">
+            <label class="col-6">Last Name:</label>
+            <label class="col-6">{{contact.last_name}}</label>
+        </p>
+        <p class="d-flex">
+            <label class="col-6">Place:</label>
+            <label class="col-6">{{contact.place}}</label>
+        </p>
+        <p class="d-flex">
+            <label class="col-6">Email:</label>
+            <label class="col-6">{{contact.e_mail}}</label>
+        </p>
+        <p class="d-flex">
+            <label class="col-6">Phone:</label>
+            <label class="col-6">{{contact.phone_no}}</label>
+        </p>
+        <fieldset class="d-flex">
+          <a href="{% url 'updatecontact_view' contact.id %}" class="btn btn-outline-secondary py-2 px-3 fw-bold mt-2 ms-2">Update</a>
+          <a href="{% url 'deletecontact_view' contact.id %}" class="btn btn-outline-danger py-2 px-3 fw-bold mt-2 ms-3">Delete</a>
+        </fieldset>
+      </form>
+    </div>
+
+  </section>
+</main>
+
+{% endblock %}
